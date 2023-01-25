@@ -9,34 +9,64 @@ class LoginPage extends Page {
     /**
      * define selectors using getter methods
      */
-    get inputUsername () {
-        return $('#username');
+    get btnMyAccount () {
+        return $("//span[normalize-space()='My Account']");
+    }
+
+    get btnRegister () {
+        return $("//a[normalize-space()='Register']");
+    }
+
+    get inputFirstname () {
+        return $("//input[@id='input-firstname']");
+    }
+    get inputLastname () {
+        return $("//input[@id='input-lastname']");
+    }
+    
+    get inputEmail () {
+        return $("//input[@id='input-email']");
+    }
+
+    get inputTelephoneNumber () {
+        return $("//input[@id='input-telephone']");
     }
 
     get inputPassword () {
-        return $('#password');
+        return $("//input[@id='input-password']");
+    }
+    get inputConfirmPassword () {
+        return $("//input[@id='input-confirm']");
     }
 
-    get btnSubmit () {
-        return $('button[type="submit"]');
+    get btnPrivacyPolicy () {
+        return $("//input[@name='agree']");
     }
 
-    /**
-     * a method to encapsule automation code to interact with the page
-     * e.g. to login using username and password
-     */
-    async login (username, password) {
-        await this.inputUsername.setValue(username);
+    get btnContinue () {
+        return $("");
+    }
+    
+    async openWeburl()
+    {
+        await browser.url("http://tutorialsninja.com/demo/index.php?route=common/home");
+        await browser.getUrl();
+
+    }
+    async login (firstname, lastname, email, telephone,password,confirmpassword) {
+        await this.btnMyAccount.click();
+        await this.btnMyAccount.click();
+        await this.inputFirstname.setValue(firstname);
+        await this.inputLastname.setValue(lastname);
+        await this.inputEmail.setValue(email);
+        await this.inputTelephoneNumber.setValue(telephone);
         await this.inputPassword.setValue(password);
-        await this.btnSubmit.click();
+        await this.inputConfirmPassword.setValue(confirmpassword);
+        await this.btnPrivacyPolicy.click();
+        await this.btnContinue.click();
     }
 
-    /**
-     * overwrite specific options to adapt it to page object
-     */
-    open () {
-        return super.open('login');
-    }
+
 }
 
 module.exports = new LoginPage();
