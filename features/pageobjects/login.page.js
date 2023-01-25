@@ -44,7 +44,12 @@ class LoginPage extends Page {
     }
 
     get btnContinue () {
-        return $("");
+        return $("//input[@value='Continue']");
+    }
+
+    get registerMessage()
+    {
+        return $("//h1[normalize-space()='Your Account Has Been Created!']");
     }
     
     async openWeburl()
@@ -64,6 +69,12 @@ class LoginPage extends Page {
         await this.inputConfirmPassword.setValue(confirmpassword);
         await this.btnPrivacyPolicy.click();
         await this.btnContinue.click();
+        
+    }
+    async getmessage()
+    {
+        await this.registerMessage.waitForDisplayed();
+        await this.registerMessage.getText();
     }
 
 
