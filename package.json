@@ -4,7 +4,8 @@
   "description": "My first webdriver io script ",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "wdio": "wdio run ./wdio.conf.js --cucumberOpts.tagExpression "
   },
   "author": "Sumithra Aradhya",
   "license": "ISC",
@@ -16,7 +17,7 @@
     "@wdio/selenium-standalone-service": "^7.20.8",
     "@wdio/spec-reporter": "^7.20.8",
     "chai": "^4.3.6",
-    "chromedriver": "^104.0.0",
+    "chromedriver": "^108.0.0",
     "local-runner": "^0.1.1-alpha",
     "wdio-chromedriver-service": "^7.3.2",
     "wdio-html-nice-reporter": "^8.0.3-beta2",
